@@ -96,8 +96,17 @@ export class HandSimulatorComponent implements OnInit {
   }
 
   dealCards() {
-    //deal to user
-    //deal to everyone else
+    for (const player of this.otherPlayers) {
+      let cardFound = false;
+
+      while (!cardFound) {
+        let x = this.findRandomCard();
+        if (x) {
+          cardFound = true;
+          player.card1 = x;
+        }
+      }
+    }
   }
 
   findRandomCard() {
@@ -118,8 +127,8 @@ export class HandSimulatorComponent implements OnInit {
       'ace',
     ];
 
-    let suit = suitsArray[Math.floor(Math.random() * Math.floor(4))];
-    let card = cardsArray[Math.floor(Math.random() * Math.floor(13))];
+    const suit = suitsArray[Math.floor(Math.random() * Math.floor(4))];
+    const card = cardsArray[Math.floor(Math.random() * Math.floor(13))];
 
     return this.cards[suit][card];
   }
