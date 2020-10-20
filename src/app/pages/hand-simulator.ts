@@ -1,5 +1,6 @@
 import { OnInit, Component } from '@angular/core';
-
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
 @Component({
   templateUrl: './hand-simulator.html',
   styleUrls: ['./hand-simulator.scss'],
@@ -7,64 +8,64 @@ import { OnInit, Component } from '@angular/core';
 export class HandSimulatorComponent implements OnInit {
   cards = {
     hearts: {
-      2: false,
-      3: false,
-      4: false,
-      5: false,
-      6: false,
-      7: false,
-      8: false,
-      9: false,
-      10: false,
-      11: false,
-      queen: false,
-      king: false,
-      ace: false,
+      2: { dealt: false, name: '2' },
+      3: { dealt: false, name: '3' },
+      4: { dealt: false, name: '4' },
+      5: { dealt: false, name: '5' },
+      6: { dealt: false, name: '6' },
+      7: { dealt: false, name: '7' },
+      8: { dealt: false, name: '8' },
+      9: { dealt: false, name: '9' },
+      10: { dealt: false, name: '10' },
+      11: { dealt: false, name: 'Jack' },
+      12: { dealt: false, name: 'Queen' },
+      13: { dealt: false, name: 'King' },
+      14: { dealt: false, name: 'Ace' },
     },
     spades: {
-      2: false,
-      3: false,
-      4: false,
-      5: false,
-      6: false,
-      7: false,
-      8: false,
-      9: false,
-      10: false,
-      11: false,
-      12: false,
-      13: false,
-      14: false,
+      2: { dealt: false, name: '2' },
+      3: { dealt: false, name: '3' },
+      4: { dealt: false, name: '4' },
+      5: { dealt: false, name: '5' },
+      6: { dealt: false, name: '6' },
+      7: { dealt: false, name: '7' },
+      8: { dealt: false, name: '8' },
+      9: { dealt: false, name: '9' },
+      10: { dealt: false, name: '10' },
+      11: { dealt: false, name: 'Jack' },
+      12: { dealt: false, name: 'Queen' },
+      13: { dealt: false, name: 'King' },
+      14: { dealt: false, name: 'Ace' },
     },
     diamonds: {
-      2: false,
-      3: false,
-      4: false,
-      5: false,
-      6: false,
-      7: false,
-      8: false,
-      9: false,
-      10: false,
-      11: false,
-      12: false,
-      13: false,
-      14: false,
+      2: { dealt: false, name: '2' },
+      3: { dealt: false, name: '3' },
+      4: { dealt: false, name: '4' },
+      5: { dealt: false, name: '5' },
+      6: { dealt: false, name: '6' },
+      7: { dealt: false, name: '7' },
+      8: { dealt: false, name: '8' },
+      9: { dealt: false, name: '9' },
+      10: { dealt: false, name: '10' },
+      11: { dealt: false, name: 'Jack' },
+      12: { dealt: false, name: 'Queen' },
+      13: { dealt: false, name: 'King' },
+      14: { dealt: false, name: 'Ace' },
     },
     clubs: {
-      2: false,
-      3: false,
-      4: false,
-      5: false,
-      6: false,
-      7: false,
-      8: false,
-      9: false,
-      10: false,
-      11: false,
-      12: false,
-      13: false,
-      14: false,
+      2: { dealt: false, name: '2' },
+      3: { dealt: false, name: '3' },
+      4: { dealt: false, name: '4' },
+      5: { dealt: false, name: '5' },
+      6: { dealt: false, name: '6' },
+      7: { dealt: false, name: '7' },
+      8: { dealt: false, name: '8' },
+      9: { dealt: false, name: '9' },
+      10: { dealt: false, name: '10' },
+      11: { dealt: false, name: 'Jack' },
+      12: { dealt: false, name: 'Queen' },
+      13: { dealt: false, name: 'King' },
+      14: { dealt: false, name: 'Ace' },
     },
   };
 
@@ -77,9 +78,7 @@ export class HandSimulatorComponent implements OnInit {
 
   otherPlayers = [];
 
-  ngOnInit(): void {
-    console.log(this.cards);
-  }
+  ngOnInit(): void {}
 
   // create a hand for each player, deal these first
   // then deal community cards
@@ -94,6 +93,13 @@ export class HandSimulatorComponent implements OnInit {
     for (let i = 0; i > numberOfPlayers; i++) {
       const player = {};
       this.otherPlayers.push(player);
+    }
+  }
+
+  dealAllCommunityCards() {
+    this.communityCards = [];
+    for (let i = 0; i < 5; i++) {
+      this.communityCards.push(this.findRandomCard());
     }
   }
 
@@ -122,7 +128,11 @@ export class HandSimulatorComponent implements OnInit {
 
     const suit = suitsArray[Math.floor(Math.random() * Math.floor(4))];
     const card = cardsArray[Math.floor(Math.random() * Math.floor(13))];
+    return suit + ' ' + this.cards[suit][card].name;
+  }
 
-    return this.cards[suit][card];
+  getKeyByValue(object, value) {
+    console.log(object, value);
+    return Object.keys(object).find((key) => object[key] === value);
   }
 }
