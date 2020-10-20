@@ -10,7 +10,7 @@ Using it, you can:
 - Simulate Games
 - Understand Game Theory
 
-Poker is partially a game of luck, but the aim of this project is to give you an upper hand on your rivals by learning theory behind the glamour. Please note, this is an application is for LEARNING purposes only, it is not intended to be used as an in-game tool.
+Poker is partially a game of luck, but the aim of this project is to give you an upper hand on your rivals by learning theory behind the glamour. Please note, this is an application is for LEARNING purposes only, it is not intended to be used as an in-game tool. There's a reason I am a software engineer living in a flat in South London and not a multimillionaire pro in Vegas ;)
 
 
 # Technical Details
