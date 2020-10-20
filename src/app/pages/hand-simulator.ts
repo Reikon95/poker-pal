@@ -16,7 +16,7 @@ export class HandSimulatorComponent implements OnInit {
       8: false,
       9: false,
       10: false,
-      jack: false,
+      11: false,
       queen: false,
       king: false,
       ace: false,
@@ -31,10 +31,10 @@ export class HandSimulatorComponent implements OnInit {
       8: false,
       9: false,
       10: false,
-      jack: false,
-      queen: false,
-      king: false,
-      ace: false,
+      11: false,
+      12: false,
+      13: false,
+      14: false,
     },
     diamonds: {
       2: false,
@@ -46,10 +46,10 @@ export class HandSimulatorComponent implements OnInit {
       8: false,
       9: false,
       10: false,
-      jack: false,
-      queen: false,
-      king: false,
-      ace: false,
+      11: false,
+      12: false,
+      13: false,
+      14: false,
     },
     clubs: {
       2: false,
@@ -61,10 +61,10 @@ export class HandSimulatorComponent implements OnInit {
       8: false,
       9: false,
       10: false,
-      jack: false,
-      queen: false,
-      king: false,
-      ace: false,
+      11: false,
+      12: false,
+      13: false,
+      14: false,
     },
   };
 
@@ -77,7 +77,9 @@ export class HandSimulatorComponent implements OnInit {
 
   otherPlayers = [];
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.cards);
+  }
 
   // create a hand for each player, deal these first
   // then deal community cards
@@ -97,35 +99,26 @@ export class HandSimulatorComponent implements OnInit {
 
   dealCards() {
     for (const player of this.otherPlayers) {
-      let cardFound = false;
+      let cardFound1 = false;
 
-      while (!cardFound) {
+      while (!cardFound1) {
         let x = this.findRandomCard();
         if (x) {
-          cardFound = true;
+          cardFound1 = true;
           player.card1 = x;
         }
+        //retry??
       }
+    }
+
+    for (let i = 0; i > 5; i++) {
+      this.communityCards.push(this.findRandomCard());
     }
   }
 
   findRandomCard() {
     const suitsArray = ['hearts', 'spades', 'clubs', 'diamonds'];
-    const cardsArray = [
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      'jack',
-      'queen',
-      'king',
-      'ace',
-    ];
+    const cardsArray = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
     const suit = suitsArray[Math.floor(Math.random() * Math.floor(4))];
     const card = cardsArray[Math.floor(Math.random() * Math.floor(13))];
