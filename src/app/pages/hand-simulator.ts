@@ -97,10 +97,10 @@ export class HandSimulatorComponent implements OnInit {
   }
 
   dealAllCommunityCards() {
+    this.communityCards = [];
     for (let i = 0; i < 5; i++) {
       this.communityCards.push(this.findRandomCard());
     }
-    console.log(this.communityCards);
   }
 
   dealCards() {
@@ -128,8 +128,6 @@ export class HandSimulatorComponent implements OnInit {
 
     const suit = suitsArray[Math.floor(Math.random() * Math.floor(4))];
     const card = cardsArray[Math.floor(Math.random() * Math.floor(13))];
-    console.log(card);
-    console.log(this.cards[suit][card].name);
     return suit + ' ' + this.cards[suit][card].name;
   }
 
