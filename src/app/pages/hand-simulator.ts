@@ -8,7 +8,7 @@ import { BrowserModule } from '@angular/platform-browser';
 export class HandSimulatorComponent implements OnInit {
   cards = {
     hearts: {
-      2: { dealt: false, name: '2' },
+      2: { dealt: false, name: '2', filename: '2H' },
       3: { dealt: false, name: '3' },
       4: { dealt: false, name: '4' },
       5: { dealt: false, name: '5' },
@@ -71,12 +71,11 @@ export class HandSimulatorComponent implements OnInit {
 
   communityCards = [];
 
-  userPlayer = {
-    card1: null,
-    card2: null,
-  };
+  userPlayer = [];
 
   otherPlayers = [];
+
+  allPlayers = [...this.userPlayer, ...this.otherPlayers];
 
   ngOnInit(): void {}
 
@@ -101,6 +100,12 @@ export class HandSimulatorComponent implements OnInit {
     for (let i = 0; i < 5; i++) {
       this.communityCards.push(this.findRandomCard());
     }
+  }
+
+  dealYourCards() {
+    const yourCards = [];
+    yourCards.push(this.findRandomCard());
+    yourCards.push(this.findRandomCard());
   }
 
   dealCards() {
