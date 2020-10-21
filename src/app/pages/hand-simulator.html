@@ -6,16 +6,10 @@
     <button (click)="dealAllCommunityCards()">Deal All Community Cards</button>
 
     <div *ngIf="communityCards.length > 0">
-      <div *ngFor="let card of communityCards">{{card}}</div>
+      <div *ngFor="let card of communityCards" class="card-wrapper">
+        <img class="card" [src]="card.filename" />
+      </div>
     </div>
-    <div>
-      The king of spades is rendered as
-      <img class="card" src="../../assets/cards/KS.svg" />. 2 hearts? Move full
-      svg filename to prop
-      <!-- <img
-        class="card"
-        src="../../assets/cards/{{cards.hearts.2.filename}}.svg"
-      /> -->
-    </div>
+    <div></div>
   </div>
 </div>
