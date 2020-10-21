@@ -17,6 +17,8 @@ Poker is partially a game of luck, but the aim of this project is to give you an
 
 PokerPal is written in typescript and utilises Angular. Python is also planned for integration.
 
+Only dependency atm is CardsJS for the svgs.
+
 # Get in touch
 
 Drop me an email - cameronjwblackwood@gmail.com
