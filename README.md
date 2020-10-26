@@ -1,8 +1,8 @@
 # PokerPal
 
-PokerPal is a way to learn to play poker better by helping you understand outcomes.
+PokerPal will be a way to learn to play poker better by helping you understand outcomes.
 
-Using it, you can:
+Planned features:
 
 - Learn the rules of the game
 - Understand what hands to play, and when to do so
