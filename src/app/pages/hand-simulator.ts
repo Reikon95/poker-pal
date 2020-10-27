@@ -85,6 +85,9 @@ export class HandSimulatorComponent implements OnInit {
     },
   };
 
+  availableCards = [];
+  assignedCards = [];
+
   communityCards = [];
 
   userPlayer = [];
@@ -111,20 +114,20 @@ export class HandSimulatorComponent implements OnInit {
     }
   }
 
-  dealAllCommunityCards() {
+  dealAllCommunityCards(): void {
     this.communityCards = [];
     for (let i = 0; i < 5; i++) {
       this.communityCards.push(this.findRandomCard());
     }
   }
 
-  dealYourCards() {
+  dealYourCards(): void {
     const yourCards = [];
     yourCards.push(this.findRandomCard());
     yourCards.push(this.findRandomCard());
   }
 
-  dealCards() {
+  dealCards(): void {
     for (const player of this.otherPlayers) {
       let cardFound1 = false;
 
